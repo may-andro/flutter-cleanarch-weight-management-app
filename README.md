@@ -4,4 +4,5 @@ Weighter is a simple way of keeping track of your weight statics. It's free, pri
 
 ## Here is short video
 
-![ezgif com-video-to-gif](https://user-images.githubusercontent.com/16761273/63122295-a548d180-bfa6-11e9-86b7-4e1be380e6d8.gif)
+![ezgif com-video-to-gif (1)](https://user-images.githubusercontent.com/16761273/63122668-931b6300-bfa7-11e9-8e35-ab308f85ee87.gif)
+
