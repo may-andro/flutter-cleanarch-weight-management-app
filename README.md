@@ -1,4 +1,4 @@
-# flutter_weighter
+# Weighter
 
 A new Flutter application.
 
