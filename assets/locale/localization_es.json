@@ -1,0 +1,116 @@
+{
+  "app_name": "Weighter",
+
+  "splash_subtitle": "su rastreador de peso personal",
+
+  "welcome_label": "Minimalista, \\nRastreador de peso",
+  "welcome_message": "Una aplicación fácil de control de peso. \nNunca perderás el control de tu peso.",
+  "welcome_button": "¡Empecemos!",
+
+  "nickname_label": "¡Encantada de conocerte! ¿Cómo te llaman tus amigos?",
+  "nickname_hint": "Me llaman ...",
+  "nickname_helper": "Tu apodo es ...",
+  "nickname_validation_empty": "¡El apodo no puede estar vacío!",
+  "nickname_validation_invalid": "¡El apodo es demasiado corto!",
+
+  "gender_label": "¡Hola! ",
+  "gender_label2": "Encantada de conocerte.\n¿Eres un chico o una chica?",
+
+  "age_label": "Con el tiempo, debemos ser más cuidadosos con nuestro cuerpo ...",
+  "age_hint": "¿Cuántos años tienes?",
+  "age_helper": "Tu edad",
+  "age_validation_empty": "¡La edad no puede estar vacía!",
+  "age_validation_invalid": "¡La edad no es válida!",
+
+  "all_done_message": "¡Su cuenta ha sido creada con éxito!",
+
+  "bfp_title": "Grasa corporal",
+  "bfp_description": "Para una medición verdaderamente precisa de su porcentaje de grasa corporal, necesitaría ir a un laboratorio y que un profesional capacitado lo determine a través de exámenes clínicos. Esto llevaría tiempo y dinero. Afortunadamente, también puede obtener una estimación de la grasa corporal con solo una báscula y una cinta métrica. Puede que no sea tan preciso como las pruebas realizadas en un entorno clínico, pero puede ayudarle a determinar si está dentro de un rango saludable o si necesita cambiar su rutina de alimentación y ejercicio. Cuando se mide constantemente a lo largo del tiempo, esta fórmula le mostrará si está perdiendo o ganando grasa corporal.",
+  "bfp_men_formula": "(1.20 x IMC) + (0.23 x edad) – 10.8 – 5.4",
+  "bfp_women_formula": "(1.20 x IMC) + (0.23 x edad) – 5.4",
+  "bfp_sub_header_3": "Su porcentaje de grasa corporal es",
+
+  "setting_language": "Idioma",
+  "setting_theme": "Tema",
+  "setting_about": "Acerca de",
+  "setting_rating": "Calificaciones",
+  "setting_feedback": "Retroalimentación",
+  "setting_reset": "Restablecer aplicación",
+
+  "body_chart_title": "Tabla corporal",
+  "body_chart_tab1_subtitle2": "J. D. Robinson Fórmula",
+  "body_chart_tab1_subtitle3": "Tu peso corporal ideal",
+  "body_chart_tab1_description": "Existen varias fórmulas para calcular el peso ideal del cuerpo humano. Estas fórmulas se basan en la altura y el género de la persona. Una de las famosas fórmulas es la fórmula de J. D. Robinson",
+  "body_chart_tab1_formula_female": "49 + (1.7 x (Altura (en pulgadas) - 60))",
+  "body_chart_tab1_formula_male": "52 + (1.9 x (Altura (en pulgadas) - 60))",
+  "body_chart_tab2_header_left": "IMC en Kg / m2",
+  "body_chart_tab2_header_right": "Categoría de IMC",
+  "body_chart_tab3_header_left": "Categoría de PGC",
+
+  "update_weight_label": "Actualizaste tu peso el",
+
+  "add_weight_label": "Añadir peso",
+  "add_weight_result_label": "El peso actualizado es: ",
+
+  "add_dialog_title": "¡Pasó otro gran año!",
+  "add_dialog_subtitle": "¿Quieres cambiar tu edad a?",
+  "height_dialog_title": "¿Has crecido? Actualiza tu altura!",
+
+  "update_weight": "Actualizar peso",
+  "history": "Historia",
+  "body_chart": "Tabla corporal",
+  "fat_calculator": "Grasa corporal",
+
+  "add_new_weight": "Añadir peso nuevo",
+  "ideal_weight": "Peso ideal:",
+
+  "next": "Próximo",
+  "finish": "Terminar",
+  "formula": "Fórmula",
+  "description": "Descripción",
+  "kg": "Kg",
+  "cm": "cm",
+  "above": "y por encima",
+  "less_then": "Menos que",
+  "years": "años",
+  "gender": "Género",
+  "age": "Años",
+  "height": "Altura",
+  "weight": "Peso",
+  "yes": "Sí",
+  "dismiss": "Cerrar",
+  "bmi": "Índice de masa corporal",
+  "bmi_unit": "kg/m2",
+  "bmi_description": "El IMC es una fórmula de medida de la grasa corporal basada en la estatura y el peso que se aplica a mujeres y hombres adultos.",
+  "no_update": "No se encontraron cambios.",
+  "gender_male": "Varón",
+  "gender_female": "Hembra",
+  "setting": "Ajuste",
+  "update": "Actualizar",
+  "bmi_short": "IMC",
+  "bpf_short": "PGC",
+  "last_updated": "Última actualización:",
+  "at": "en",
+  "english": "Inglés",
+  "spanish": "Español",
+  "reset_app": "Restablecer aplicación",
+  "reset_app_message": "Todos los datos se perderán. ¿Estás seguro?",
+  "app_description": " Está destinado a personas que desean mantener un registro de su peso corporal.\n\nWeighter funciona sin internet y todos los datos almacenados en la aplicación son privados. También proporciona otras medidas relacionadas con la salud además de registrar el peso.\n\nNo molesta al usuario con notificaciones engorrosas ni perturba la privacidad. Es fácil de entender y usar.",
+
+
+  "highly_severe_underweight": "Delgadez extrema",
+  "severe_underweight": "Delgadez severa",
+  "underweight": "Delgadez leve",
+  "normal_healthy_weight": "Normal - Peso saludable",
+  "overweight": "Exceso de peso",
+  "obese_class_1": "Obeso Clase 1 (Obeso moderado)",
+  "obese_class_2": "Obeso clase 2 (obeso severo)",
+  "obese_class_3": "Obeso clase 3 (muy gravemente obeso)",
+
+  "essential_level": "Porcentaje de grasa esencial",
+  "athletes_level": "Porcentaje de grasa para atletas",
+  "fitness_level": "Nivel de entrenamiento",
+  "average_level": "Nivel promedio",
+  "obese_level": "Nivel obeso"
+
+}

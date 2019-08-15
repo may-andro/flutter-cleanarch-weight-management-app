@@ -1,0 +1,74 @@
+name: flutter_weighter
+description: A new Flutter application.
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.2
+  rxdart: ^0.22.0
+  flutter_redux: ^0.5.3
+  redux: ^3.0.0
+  flutter_svg: ^0.13.0+2
+  flutter_lottie: ^0.2.0
+  bezier_chart: ^1.0.8
+  rect_getter: ^0.0.1
+  keyboard_visibility: ^0.5.6
+  sqflite: ^1.1.6
+  path_provider: any
+  intl: ^0.15.8
+  bubble_tab_indicator: "^0.1.4"
+  flutter_localizations:
+    sdk: flutter
+  flutter_cupertino_localizations: ^1.0.1
+  shared_preferences: ^0.5.3+4
+  url_launcher: ^5.1.2
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  assets:
+    - assets/images/weight.jpg
+    - assets/images/weight_arrow.svg
+    - assets/images/person.svg
+    - assets/images/masculine.svg
+    - assets/images/femenine.svg
+    - assets/images/boy.svg
+    - assets/images/girl.svg
+    - animations/weight.json
+    - animations/record.json
+    - animations/account.json
+    - assets/locale/localization_en.json
+    - assets/locale/localization_es.json
+    - assets/images/icon.png
