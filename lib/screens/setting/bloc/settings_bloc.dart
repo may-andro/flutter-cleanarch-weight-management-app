@@ -1,15 +1,8 @@
 import 'dart:async';
-import 'dart:math' as math;
 
+import 'package:flutter_weighter/model/notification_item.dart';
 import 'package:flutter_weighter/model/theme_item.dart';
-import 'package:flutter_weighter/model/user.dart';
-import 'package:flutter_weighter/model/weight_history.dart';
-import 'package:flutter_weighter/redux/app_actions.dart';
-import 'package:flutter_weighter/redux/app_state.dart';
 import 'package:flutter_weighter/repository/repository.dart';
-import 'package:flutter_weighter/utility/constants.dart';
-import 'package:intl/intl.dart';
-import 'package:redux/redux.dart';
 import 'package:rxdart/rxdart.dart';
 
 class SettingBloc {
@@ -35,12 +28,17 @@ class SettingBloc {
   Stream<double> get focusedThemePagerStream => _focusedThemePagerBehaviorSubject.stream;
   Sink<double> get focusedThemePagerSink => _focusedThemePagerBehaviorSubject.sink;
 
+  final _focusedNotificationReminderBehaviorSubject = PublishSubject<NotificationItem>();
+  Stream<NotificationItem> get focusedNotificationReminderStream => _focusedNotificationReminderBehaviorSubject.stream;
+  Sink<NotificationItem> get focusedNotificationReminderSink => _focusedNotificationReminderBehaviorSubject.sink;
+
   dispose() {
     _mainPagerBehaviorSubject.close();
     _selectedPageBehaviorSubject.close();
     _verticalPagerBehaviorSubject.close();
     _themeSelectionBehaviorSubject.close();
     _focusedThemePagerBehaviorSubject.close();
+    _focusedNotificationReminderBehaviorSubject.close();
   }
 
   Future resetApp() async{

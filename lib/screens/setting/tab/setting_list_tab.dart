@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_weighter/model/notification_item.dart';
+import 'package:flutter_weighter/redux/app_actions.dart';
+import 'package:flutter_weighter/redux/app_state.dart';
 import 'package:flutter_weighter/screens/onboarding/onboarding_page.dart';
 import 'package:flutter_weighter/screens/setting/bloc/bloc_provider.dart';
 import 'package:flutter_weighter/utility/constants.dart';
 import 'package:flutter_weighter/utility/translation/app_translations.dart';
 import 'package:flutter_weighter/widget/base_sliver_header.dart';
 import 'package:flutter_weighter/widget/dialog_content.dart';
+import 'package:redux/redux.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingListTab extends StatelessWidget {
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+
+  SettingListTab() : flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
   @override
   Widget build(BuildContext context) {
     final bloc = SettingsBlocProvider.of(context);
@@ -15,6 +25,18 @@ class SettingListTab extends StatelessWidget {
       title: AppTranslations.of(context).text("setting"),
       bodyWidget: ListView(
         children: <Widget>[
+          StoreConnector<AppState, NotificationItem>(
+              converter: (Store<AppState> store) => store.state.notificationItem,
+              builder: (BuildContext context, NotificationItem notificationItem) {
+                return _SettingItemWidget(
+                  iconData: Icons.notifications_active,
+                  label: AppTranslations.of(context).text("setting_notification"),
+                  onPress: () {
+                    _editNotificationReminderDialog(context, notificationItem);
+                  },
+                  rightLabel: AppTranslations.of(context).text(notificationItem.label),
+                );
+              }),
           _SettingItemWidget(
               iconData: Icons.language,
               label: AppTranslations.of(context).text("setting_language"),
@@ -98,17 +120,118 @@ class SettingListTab extends StatelessWidget {
       throw 'Could not launch $url';
     }
   }
+
+  Widget _notificationItem(NotificationItem notificationItem, NotificationItem groupNotificationItem, Function onClick,
+      BuildContext context) {
+    return RadioListTile<NotificationItem>(
+      title: Text(
+        AppTranslations.of(context).text(notificationItem.label),
+        style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.w300,
+            fontSize: MediaQuery.of(context).size.shortestSide * 0.04),
+      ),
+      value: notificationItem,
+      groupValue: groupNotificationItem,
+      onChanged: onClick,
+    );
+  }
+
+  Future<bool> _editNotificationReminderDialog(BuildContext context, NotificationItem notificationItem) {
+    var store = StoreProvider.of<AppState>(context);
+    return showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return Dialog(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+              child: DialogContent(
+                title: AppTranslations.of(context).text("setting_notification"),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListView.builder(
+                    reverse: false,
+                    itemBuilder: (_, int index) => _notificationItem(
+                      notificationItemList[index],
+                      notificationItem,
+                      (value) {
+                        Navigator.of(context).pop();
+                        store.dispatch(UpdateNotificationReminderAction(notificationItem: value));
+                        _scheduleNotification(value);
+                      },
+                      context,
+                    ),
+                    itemCount: notificationItemList.length,
+                  ),
+                ),
+                positiveText: '',
+                negativeText: '',
+                onNegativeCallBack: () {
+                  Navigator.of(context).pop();
+                },
+                onPositiveCallback: () {
+                  Navigator.of(context).pop();
+                },
+              ));
+        });
+  }
+
+  Future<void> _scheduleNotification(NotificationItem notificationItem) async {
+    if (notificationItem.id == SELECTED_NOTIFICATION_NONE) {
+      await flutterLocalNotificationsPlugin.cancelAll();
+      return;
+    }
+
+    var initializationSettingsAndroid = AndroidInitializationSettings('icon');
+    var initializationSettingsIOS = new IOSInitializationSettings(onDidReceiveLocalNotification: null);
+    var initializationSettings = new InitializationSettings(initializationSettingsAndroid, initializationSettingsIOS);
+    flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: null);
+
+    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+      'weighter',
+      'weighter',
+      'weighter',
+      importance: Importance.Max,
+      priority: Priority.High,
+      ticker: 'ticker',
+    );
+    var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+    var platformChannelSpecifics = NotificationDetails(androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+
+    var time = new Time(18, 0, 0);
+
+    if (notificationItem.id == SELECTED_NOTIFICATION_DAILY) {
+      await flutterLocalNotificationsPlugin.showDailyAtTime(
+        0,
+        'Daily reminder',
+        'Update your weight today',
+        time,
+        platformChannelSpecifics,
+      );
+    } else {
+      await flutterLocalNotificationsPlugin.showWeeklyAtDayAndTime(
+        0,
+        'Weekly reminder',
+        'Updat your weight for this week',
+        Day.Monday,
+        time,
+        platformChannelSpecifics,
+      );
+    }
+  }
 }
 
 class _SettingItemWidget extends StatelessWidget {
   final IconData iconData;
   final String label;
   final Function onPress;
+  final String rightLabel;
 
   _SettingItemWidget({
     @required this.iconData,
     @required this.label,
     @required this.onPress,
+    this.rightLabel = '',
   });
 
   @override
@@ -132,6 +255,14 @@ class _SettingItemWidget extends StatelessWidget {
             Text(
               label,
               style: TextStyle(fontSize: MediaQuery.of(context).size.shortestSide * 0.04),
+            ),
+            Spacer(),
+            Text(
+              rightLabel,
+              style: TextStyle(fontSize: MediaQuery.of(context).size.shortestSide * 0.04, color: Colors.grey),
+            ),
+            SizedBox(
+              width: 16,
             ),
           ],
         ),

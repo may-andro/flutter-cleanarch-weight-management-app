@@ -1,5 +1,6 @@
 import 'package:flutter_weighter/model/ideal_bmi.dart';
 import 'package:flutter_weighter/model/ideal_fat.dart';
+import 'package:flutter_weighter/model/notification_item.dart';
 import 'package:flutter_weighter/model/theme_item.dart';
 
 import 'color_utility.dart';
@@ -38,7 +39,12 @@ const SELECTED_THEME_RED = 0;
 const SELECTED_THEME_BLUE = 1;
 const SELECTED_THEME_GREEN = 2;
 const SELECTED_THEME_YELLOW = 3;
-const SELECTED_THEME_DARK = 3;
+const SELECTED_THEME_DARK = 4;
+
+const SELECTED_NOTIFICATION = 'SELECTED_NOTIFICATION';
+const SELECTED_NOTIFICATION_DAILY = 0;
+const SELECTED_NOTIFICATION_WEEKLY = 1;
+const SELECTED_NOTIFICATION_NONE = 2;
 
 List<IdealBMI> idealBMIList = [
 	IdealBMI(
@@ -161,5 +167,23 @@ List<ThemeItem> themeList = [
 			SELECTED_THEME_DARK,
 			'Theme Dark',
 			THEME_COLOR_DARK
+	),
+];
+
+List<NotificationItem> notificationItemList = [
+	NotificationItem(
+			SELECTED_NOTIFICATION_DAILY,
+			'daily',
+			THEME_COLOR_RED
+	),
+	NotificationItem(
+			SELECTED_NOTIFICATION_WEEKLY,
+			'weekly',
+			THEME_COLOR_BLUE
+	),
+	NotificationItem(
+			SELECTED_NOTIFICATION_NONE,
+			'turn_off',
+			THEME_COLOR_BLUE
 	),
 ];
