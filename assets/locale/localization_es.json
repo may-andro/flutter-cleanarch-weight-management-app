@@ -30,6 +30,7 @@
   "bfp_women_formula": "(1.20 x IMC) + (0.23 x edad) – 5.4",
   "bfp_sub_header_3": "Su porcentaje de grasa corporal es",
 
+  "setting_notification": "Notificación",
   "setting_language": "Idioma",
   "setting_theme": "Tema",
   "setting_about": "Acerca de",
@@ -111,6 +112,9 @@
   "athletes_level": "Porcentaje de grasa para atletas",
   "fitness_level": "Nivel de entrenamiento",
   "average_level": "Nivel promedio",
-  "obese_level": "Nivel obeso"
+  "obese_level": "Nivel obeso",
 
+  "turn_off": "Apagado",
+  "weekly": "Semanal",
+  "daily": "Diario"
 }

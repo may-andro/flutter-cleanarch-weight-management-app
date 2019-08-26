@@ -11,6 +11,7 @@ import 'package:flutter_weighter/utility/constants.dart';
 import 'dart:math';
 
 import 'package:flutter_weighter/utility/translation/app_translations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemePager extends StatelessWidget {
   final PageController pageController;
@@ -50,12 +51,19 @@ class ThemePager extends StatelessWidget {
                       style:
                           TextStyle(color: Colors.black87, fontSize: MediaQuery.of(context).size.shortestSide * 0.04)),
                   onPressed: () {
-                    StoreProvider.of<AppState>(context).dispatch(ChangeThemeAction(themeId: theme));
-                    bloc.pageNavigationSink.add(NAVIGATE_TO_SETTINGS_TAB);
+                    setThemeInPreference(theme.id).then((val) {
+                      StoreProvider.of<AppState>(context).dispatch(ChangeThemeAction(themeId: theme));
+                      bloc.pageNavigationSink.add(NAVIGATE_TO_SETTINGS_TAB);
+                    });
                   }),
             ),
           );
         });
+  }
+
+  Future setThemeInPreference(int themeId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt(SELECTED_THEME, themeId);
   }
 
   Widget _pager(BuildContext context, SettingBloc bloc) {
